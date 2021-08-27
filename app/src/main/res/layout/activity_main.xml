@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:paddingStart="10dp"
-    android:paddingTop="5dp"
-    android:paddingEnd="10dp"
     tools:context=".MainActivity">
 
-    <EditText
+    <dev.lonelyteapot.bicon.BlockedSelectionEditText
         android:id="@+id/editTotalLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@null"
         android:inputType="number"
         android:paddingBottom="4dp"
         android:text="0"
@@ -29,7 +28,7 @@
         android:gravity="start"
         android:text="left for "
         android:textSize="28sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTotalLeft"
+        app:layout_constraintBottom_toBottomOf="@+id/textDaysLeft"
         app:layout_constraintEnd_toStartOf="@+id/textDaysLeft"
         app:layout_constraintHorizontal_chainStyle="packed" />
 
@@ -40,7 +39,7 @@
         android:gravity="center_horizontal"
         android:text="0"
         android:textSize="28sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTotalLeft"
+        app:layout_constraintBottom_toBottomOf="@+id/label2"
         app:layout_constraintEnd_toStartOf="@+id/label2"
         app:layout_constraintHorizontal_chainStyle="packed" />
 
@@ -48,6 +47,7 @@
         android:id="@+id/label2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:gravity="end"
         android:text=" days"
         android:textSize="28sp"
@@ -56,17 +56,22 @@
         app:layout_constraintHorizontal_chainStyle="packed" />
 
     <View
-        android:id="@+id/decorUnderline"
+        android:id="@+id/divider1"
+        style="@style/HorizontalDivider"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="-6dp"
-        android:layout_marginEnd="-6dp"
-        android:layout_marginBottom="-8dp"
-        android:background="?attr/editTextBackground"
-        app:layout_constraintBottom_toBottomOf="@+id/editDateUntil"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label2" />
+
+    <View
+        android:id="@+id/underline1"
+        style="@style/HorizontalDivider"
+        android:layout_width="0dp"
         app:layout_constraintEnd_toEndOf="@+id/editDateUntil"
         app:layout_constraintStart_toStartOf="@+id/label3"
-        app:layout_constraintTop_toBottomOf="@+id/label1" />
+        app:layout_constraintTop_toBottomOf="@+id/editDateUntil" />
 
     <TextView
         android:id="@+id/label3"
@@ -82,6 +87,7 @@
         android:id="@+id/editDateUntil"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:background="@null"
         android:gravity="center_horizontal"
         android:inputType="date"
@@ -89,14 +95,16 @@
         android:textColor="?android:attr/textColorSecondary"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/label3"
-        app:layout_constraintTop_toBottomOf="@+id/label1"
+        app:layout_constraintTop_toBottomOf="@+id/divider1"
         tools:text="Dec 13" />
 
     <TextView
         android:id="@+id/textLeftToday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="80dp"
         android:fontFamily="sans-serif"
         android:gravity="center"
@@ -110,6 +118,7 @@
         android:id="@+id/label4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:gravity="end"
         android:text="left for today"
         android:textSize="30sp"
@@ -117,25 +126,51 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 
+    <View
+        android:id="@+id/divider2"
+        style="@style/HorizontalDivider"
+        android:layout_width="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label4" />
+
     <TextView
         android:id="@+id/label5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="Just spent"
         android:textSize="38sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editNewSpending"
+        app:layout_constraintBottom_toTopOf="@+id/divider3"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+
+    <dev.lonelyteapot.bicon.BlockedSelectionEditText
         android:id="@+id/editNewSpending"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:cursorVisible="false"
         android:gravity="end"
         android:inputType="number"
         android:text="0"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textIsSelectable="false"
         android:textSize="72sp"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/label5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/label5" />
+
+    <View
+        android:id="@+id/divider3"
+        style="@style/HorizontalDivider"
+        android:layout_width="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
