@@ -18,7 +18,8 @@
         android:text="0"
         android:textSize="46sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
     <TextView
@@ -98,6 +99,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/label3"
         app:layout_constraintTop_toBottomOf="@+id/divider1"
+        tools:ignore="TouchTargetSizeCheck"
         tools:text="Dec 13" />
 
     <TextView
@@ -105,14 +107,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:text="0"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="60sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTotalLeft" />
+        app:layout_constraintTop_toBottomOf="@+id/textLeftEachDay" />
 
     <TextView
         android:id="@+id/label4"
@@ -120,7 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:gravity="end"
-        android:text="left for today"
+        android:text="for today"
         android:textSize="30sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textLeftToday"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -135,6 +137,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label4" />
+
+    <TextView
+        android:id="@+id/textLeftEachDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="60sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTotalLeft" />
+
+    <TextView
+        android:id="@+id/label6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:gravity="end"
+        android:text="for each day"
+        android:textSize="30sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textLeftEachDay"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/divider4"
+        style="@style/HorizontalDivider"
+        android:layout_width="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label6" />
 
     <TextView
         android:id="@+id/label5"
@@ -163,7 +200,8 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/label5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/label5" />
+        app:layout_constraintStart_toEndOf="@+id/label5"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <View
         android:id="@+id/divider3"
