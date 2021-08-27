@@ -13,5 +13,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.editNewSpending.addTextChangedListener(LeadingZeroTextWatcher())
+        binding.editTotalLeft.addTextChangedListener(LeadingZeroTextWatcher())
+        binding.editDateUntil.addTextChangedListener(DateTextWatcher())
     }
 }
