@@ -20,13 +20,17 @@ class MainActivity : AppCompatActivity() {
     private var total: Long = 0
         set(value) {
             field = value
-            val str = value.toString()
+            val str = if (value == 0L) {""} else {value.toString()}
             if (binding.etTotal.text.toString() != str) {
                 binding.etTotal.setText(str)
             }
         }
 
     private var until: LocalDate = LocalDate.now()
+        set(value) {
+            field = value
+            binding.etUntil.setText(value.format(DATE_FORMATTER))
+        }
 
     private var daysLeft: Long = 1
 
@@ -51,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     fun addNewSpending(value: Long) {
         total -= value
         forToday -= value
-        forEachDay = (total - max(forToday, 0)) / max(daysLeft - 1, 1)
+        forEachDay = (max(total, 0) - max(forToday, 0)) / max(daysLeft - 1, 1)
         binding.etNewRecord.text.clear()
     }
 
@@ -59,15 +63,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
+        until = LocalDate.now()
+
         binding.etTotal.doAfterTextChanged { text ->
-            try {
-                val new = text.toString().toLong()
-                if (total != new) {
-                    total = new
-                    calculate()
-                }
-            } catch (e: NumberFormatException) {
+            if (text.isNullOrEmpty()) {
+                total = 0
             }
+            else {
+                try {
+                    val new = text.toString().toLong()
+                    if (total != new) {
+                        total = new
+                    }
+                } catch (e: NumberFormatException) {
+                }
+            }
+            calculate()
         }
 
         binding.etUntil.doAfterTextChanged { text ->
