@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-    private var daysLeft: Long = 1
+    private var daysLeft: Long = 0
 
     private var forEachDay: Long = 0
         set(value) {
@@ -50,15 +50,15 @@ class MainActivity : AppCompatActivity() {
         }
 
     fun calculate() {
-        daysLeft = max(ChronoUnit.DAYS.between(LocalDate.now(), until) + 1, 1)
-        forEachDay = total / daysLeft
+        daysLeft = max(ChronoUnit.DAYS.between(LocalDate.now(), until), 0L)
+        forEachDay = total / (daysLeft + 1)
         forToday = forEachDay
     }
 
     fun addNewSpending(value: Long) {
         total -= value
         forToday -= value
-        forEachDay = (max(total, 0) - max(forToday, 0)) / max(daysLeft - 1, 1)
+        forEachDay = max((total - forToday) / max(daysLeft, 1L), max(0L, forToday))
         binding.etNewRecord.text.clear()
     }
 
@@ -71,17 +71,18 @@ class MainActivity : AppCompatActivity() {
         binding.etTotal.doAfterTextChanged { text ->
             if (text.isNullOrEmpty()) {
                 total = 0
+                calculate()
             }
             else {
                 try {
                     val new = text.toString().toLong()
                     if (total != new) {
                         total = new
+                        calculate()
                     }
                 } catch (e: NumberFormatException) {
                 }
             }
-            calculate()
         }
 
         binding.etUntil.doAfterTextChanged { text ->
