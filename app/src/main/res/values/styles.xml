@@ -13,7 +13,7 @@
     </style>
     <style name="DateEditText" parent="NumericEditText">
         <item name="android:inputType">date</item>
-        <item name="android:maxEms">4</item>
+        <item name="android:maxLength">8</item>
     </style>
     <style name="Label" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">18sp</item>
