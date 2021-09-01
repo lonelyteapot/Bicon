@@ -92,7 +92,10 @@ class MainActivity : AppCompatActivity() {
         binding.etNewRecord.setOnEditorActionListener { textView, action, keyEvent ->
             when (action) {
                 EditorInfo.IME_ACTION_DONE -> {
-                    addNewSpending(textView.text.toString().toLong())
+                    try {
+                        addNewSpending(textView.text.toString().toLong())
+                    } catch (e: NumberFormatException) {
+                    }
                     true
                 }
                 else -> false
