@@ -29,7 +29,10 @@ class MainActivity : AppCompatActivity() {
     private var until: LocalDate = LocalDate.now()
         set(value) {
             field = value
-            binding.etUntil.setText(value.format(DATE_FORMATTER))
+            val str = value.format(DATE_FORMATTER)
+            if (binding.etUntil.text.toString() != str) {
+                binding.etUntil.setText(str)
+            }
         }
 
     private var daysLeft: Long = 1
