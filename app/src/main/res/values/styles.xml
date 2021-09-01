@@ -11,6 +11,12 @@
         <item name="android:inputType">date</item>
         <item name="android:maxLength">8</item>
     </style>
+    <style name="NonEditableEditText" parent="NumericEditText">
+        <item name="android:clickable">false</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+    </style>
     <style name="Label" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">18sp</item>
         <item name="android:fontFamily">@font/comfortaa_light</item>
